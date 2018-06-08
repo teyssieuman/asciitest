@@ -16,123 +16,51 @@ Lorem Ipsum pasajlarının birçok çeşitlemesi vardır. Ancak bunların büyü
 | Critère | MarkDown | Asciidoc |
 |===
 
+== Using Mathematical Formulas
 
-== Using UML Diagrams
+http://www.mathjax.org/[MathJax] is an open source JavaScript display engine for (((mathematics)))mathematics that works in all browsers. In addition to png output, you can produce svg output also. Just change the extension.
 
-You can use (((PlantUML)))PlantUML extension
-
-
-[uml,file="toto-diagram.png"]
+.Tex Example
+[math,file="tex-formula.png"]
 --
-skinparam backgroundColor #EEEBDC
-skinparam handwritten true
-
-skinparam sequence {
-	ArrowColor DeepSkyBlue
-	ActorBorderColor DeepSkyBlue
-	LifeLineBorderColor blue
-	LifeLineBackgroundColor #A9DCDF
-	
-	ParticipantBorderColor DeepSkyBlue
-	ParticipantBackgroundColor DodgerBlue
-	ParticipantFontName Impact
-	ParticipantFontSize 17
-	ParticipantFontColor #A9DCDF
-	
-	ActorBackgroundColor aqua
-	ActorFontColor DeepSkyBlue
-	ActorFontSize 17
-	ActorFontName Aapex
-}
-
-actor User
-participant "First Class" as A
-participant "Second Class" as B
-participant "Last Class" as C
-
-User -> A: DoWork
-activate A
-
-A -> B: Create Request
-activate B
-
-B -> C: DoWork
-activate C
-C --> B: WorkDone
-destroy C
-
-B --> A: Request Created
-deactivate B
-
-A --> User: Done
-deactivate A
-
-
+\begin{align}
+\dot{x} & = \sigma(y-x) \\
+\dot{u} & = \rho x - y - xz \\
+\dot{z} & = -\beta z + xyz
+\end{align}
 --
 
-.UML http://plantuml.sourceforge.net/
-[uml,file="uml-diagram.png"]
+You can use (((Tex)))Tex or (((MathML)))MathML languages for describing mathematical formulas in AsciidocFX. AsciidocFX converts this textual formulas as png image.
+
+.MathML Example
+[math,file="mathml-formula.png"]
 --
-abstract class AbstractList01
-abstract AbstractCollection02
-interface List
-interface Collection
-
-List <|-- AbstractList
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollect
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-  Object[] elementData
-  size()
-}
-
-enum TimeUnit {
-  DAYS
-  HOURS
-  MINUTES
-}
-
-annotation SuppressWarnings
---
-
-.UML http://plantuml.sourceforge.net/ditaa.html
-[uml,file="ditaa-diagram.png"]
---
-@startditaa
-+--------+   +-------+    +-------+
-|        +---+ ditaa +--> |       |
-|  Text  |   +-------+    |diagram|
-|Document|   |!magic!|    |       |
-|     {d}|   |       |    |       |
-+---+----+   +-------+    +-------+
-    :                         ^
-    |       Lots of work      |
-    +-------------------------+
-@endditaa
---
-
-.UML http://plantuml.sourceforge.net/ditaa.html
-[uml,file="dot-diagram.png"]
---
-@startdot
-digraph foo {
-  node [style=rounded]
-  node1 [shape=box]
-  node2 [fillcolor=yellow, style="rounded,filled", shape=diamond]
-  node3 [shape=record, label="{ a | b | c }"]
-
-  node1 -> node2 -> node3
-}
-@enddot
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>x</mi>
+  <mo>=</mo>
+  <mrow>
+    <mfrac>
+      <mrow>
+        <mo>&#x2212;</mo>
+        <mi>b</mi>
+        <mo>&#xB1;</mo>
+        <msqrt>
+          <msup>
+            <mi>b</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>&#x2212;</mo>
+          <mn>4</mn>
+          <mi>a</mi>
+          <mi>c</mi>
+        </msqrt>
+      </mrow>
+      <mrow>
+        <mn>2</mn>
+        <mi>a</mi>
+      </mrow>
+    </mfrac>
+  </mrow>
+  <mtext>.</mtext>
+</math>
 --
